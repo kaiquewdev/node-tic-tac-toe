@@ -19,9 +19,7 @@ vows.describe('Tic-tac-toe').addBatch({
         'em um ponto da grade': function ( topic ) {
             topic.setGrid();
 
-            topic.setCoupe( 0, 2, 'X' );
-
-            assert.equal( topic.getCoupe( 0, 2 ) === 'X', true, 'Ponto não definido corretamente na grade.' );
+            assert.equal( topic.setCoupe( 0, 2, 'X' ), true, 'Ponto não definido corretamente na grade.' );
         }
     },
 
@@ -31,9 +29,7 @@ vows.describe('Tic-tac-toe').addBatch({
         'Testando jogada': function ( topic ) {
             topic.setGrid();
 
-            topic.setCoupe( 0, 2, 'X' );
-
-            assert.equal( topic.getCoupe( 0, 2 ) === 'X', true, 'Não é a vez do X' );
+            assert.equal( topic.setCoupe( 0, 2, 'X' ), true, 'Não é a vez do X' );
         }
     },
 
@@ -43,9 +39,9 @@ vows.describe('Tic-tac-toe').addBatch({
         'Testando jogada': function ( topic ) {
             topic.setGrid();
 
-            topic.setCoupe( 0, 2, 'O' );
+            topic.setCoupe( 0, 1, 'X' );
 
-            assert.equal( topic.getCoupe( 0, 2 ) === 'O', true, 'Não é a vez do O' );
+            assert.equal( topic.setCoupe( 0, 2, 'O' ), true, 'Não é a vez do O' );
         }
     },
 
@@ -55,9 +51,7 @@ vows.describe('Tic-tac-toe').addBatch({
         'Testando jogada': function ( topic ) {
             topic.setGrid();
 
-            topic.setCoupe( 0, 2, 'O' );
-
-            assert.equal( topic.getCoupe( 0, 2 ) === null, true, 'É a vez do X' );
+            assert.equal( topic.setCoupe( 0, 2, 'O' ), false, 'É a vez do X' );
         }
     },
 
@@ -68,12 +62,8 @@ vows.describe('Tic-tac-toe').addBatch({
             topic.setGrid();
 
             topic.setCoupe( 0, 2, 'X' );
-            topic.setCoupe( 1, 2, 'O' );
-            topic.setCoupe( 2, 2, 'O' );
 
-            assert.equal( topic.getCoupe( 0, 2 ) === null, true, 'É a vez do O' );
+            assert.equal( topic.setCoupe( 1, 2, 'X' ), false, 'É a vez do O' );
         }
     },
-
-
 }).run();

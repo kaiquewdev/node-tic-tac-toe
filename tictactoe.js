@@ -10,6 +10,7 @@ Tictactoe.game = function () {
         grid = [];
 
         this.setGrid = function () {
+            // Cria a grade do jogo
             var output = false;
             var y = x = 3;
 
@@ -21,22 +22,32 @@ Tictactoe.game = function () {
         };
 
         this.getGrid = function () {
+            // Retorna toda a grade
             return grid;
         };
 
         this.setCoupe = function ( x, y, v ) {
-            if ( grid.length > 0 ) {
-                moves -= 1;
+            // Define um moviento, inserindo ele na grade
+            var output = false;
 
-                if ( moves > -1 ) {
-                    if ( !( v === 'X' && moves in times.x ) || !( v === 'O' && moves in times.y ) ) {
-                        grid[y][x] = v;
-                    }
+            if ( grid.length > 0 && moves > -1 ) {
+                if ( 
+                    ( v === 'X' && times.x.indexOf( moves ) > -1 ) || 
+                    ( v === 'O' && times.o.indexOf( moves ) > -1 ) 
+                ) {
+                    grid[y][x] = v;
+
+                    moves -= 1;
+
+                    output = true;
                 }
             }
+
+            return output;
         };
 
         this.getCoupe = function ( x, y ) {
+            // Retorna o valor de um movimento existente na grade
             if ( grid.length > 0 ) {
                 return grid[y][x];
             }
