@@ -9,6 +9,16 @@ Tictactoe.game = function () {
         },
         grid = [];
 
+        // Representação do X
+        var X = (function () {
+            return 'X';
+        } ());
+        
+        // Representação do O
+        var O = (function () {
+            return 'O'
+        } ());
+
         this.setGrid = function () {
             // Cria a grade do jogo
             var output = false;
@@ -32,8 +42,8 @@ Tictactoe.game = function () {
 
             if ( grid.length > 0 && moves > -1 ) {
                 if ( 
-                    ( v === 'X' && times.x.indexOf( moves ) > -1 ) || 
-                    ( v === 'O' && times.o.indexOf( moves ) > -1 ) 
+                    ( v === X && times.x.indexOf( moves ) > -1 ) || 
+                    ( v === O && times.o.indexOf( moves ) > -1 ) 
                 ) {
                     grid[y][x] = v;
 
