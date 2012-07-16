@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var vows = require('vows'),
     assert = require('assert'),
     Tictactoe = require('./tictactoe');

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var Tictactoe = require('./tictactoe');
 
 var game = new Tictactoe.game();

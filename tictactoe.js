@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var Tictactoe = exports;
 
 Tictactoe.game = function () {
