@@ -24,11 +24,13 @@ Tictactoe.game = function () {
             var output = false;
             var y = x = 3;
 
-            do {
-                if ( y > 0 ) {
-                    grid.push( [ null, null, null ] );
-                }
-            } while ( y-- );
+            if ( grid.length === 0 ) {
+                do {
+                    if ( y > 0 ) {
+                        grid.push( [ null, null, null ] );
+                    }
+                } while ( y-- );
+            }
         };
 
         this.getGrid = function () {
@@ -45,11 +47,13 @@ Tictactoe.game = function () {
                     ( v === X && times.x.indexOf( moves ) > -1 ) || 
                     ( v === O && times.o.indexOf( moves ) > -1 ) 
                 ) {
-                    grid[y][x] = v;
+                    if ( this.getCoupe( x, y ) === null ) {
+                        grid[y][x] = v;
 
-                    moves -= 1;
+                        moves -= 1;
 
-                    output = true;
+                        output = true;
+                    }
                 }
             }
 

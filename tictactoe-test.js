@@ -61,9 +61,129 @@ vows.describe('Tic-tac-toe').addBatch({
         'Testando jogada': function ( topic ) {
             topic.setGrid();
 
-            topic.setCoupe( 0, 2, 'X' );
+            topic.setCoupe( 0, 0, 'X' );
 
             assert.equal( topic.setCoupe( 1, 2, 'X' ), false, 'É a vez do O' );
+        }
+    },
+
+    'Horizontal, primeira': {
+        topic: new Tictactoe.game(),
+
+        'linha': function ( topic ) {
+            topic.setGrid();
+
+            topic.setCoupe( 0, 0, 'X' );
+            topic.setCoupe( 0, 1, 'O' );
+
+            topic.setCoupe( 1, 0, 'X' );
+            topic.setCoupe( 0, 2, 'O' );
+
+            topic.setCoupe( 2, 0, 'X' );
+
+            assert.equal( topic.getCoupe( 0, 0 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 1, 0 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 2, 0 ) === 'X', true, 'Não correspondente a X' );
+        },
+    },
+
+    'Horizontal, segunda': {
+        topic: new Tictactoe.game(),
+
+        'linha': function ( topic ) {
+            topic.setGrid();
+
+            topic.setCoupe( 0, 1, 'X' );
+            topic.setCoupe( 0, 0, 'O' );
+
+            topic.setCoupe( 1, 1, 'X' );
+            topic.setCoupe( 2, 2, 'O' );
+
+            topic.setCoupe( 2, 1, 'X' );
+
+            assert.equal( topic.getCoupe( 0, 1 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 1, 1 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 2, 1 ) === 'X', true, 'Não correspondente a X' );
+        }
+    },
+
+    'Horizontal, terceira': {
+        topic: new Tictactoe.game(),
+
+        'linha': function ( topic ) {
+            topic.setGrid();
+
+            topic.setCoupe( 0, 2, 'X' );
+            topic.setCoupe( 0, 0, 'O' );
+
+            topic.setCoupe( 1, 2, 'X' );
+            topic.setCoupe( 2, 0, 'O' );
+
+            topic.setCoupe( 2, 2, 'X' );
+
+            assert.equal( topic.getCoupe( 0, 2 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 1, 2 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 2, 2 ) === 'X', true, 'Não correspondente a X' );
+        }
+    },
+
+    'Vertical, primeira': {
+        topic: new Tictactoe.game(),
+
+        'linha': function ( topic ) {
+            topic.setGrid();
+
+            topic.setCoupe( 0, 0, 'X' );
+            topic.setCoupe( 1, 2, 'O' );
+
+            topic.setCoupe( 0, 1, 'X' );
+            topic.setCoupe( 2, 2, 'O' );
+
+            topic.setCoupe( 0, 2, 'X' );
+
+            assert.equal( topic.getCoupe( 0, 0 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 0, 1 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 0, 2 ) === 'X', true, 'Não correspondente a X' );
+        }
+    },
+    
+    'Vertical, segunda': {
+        topic: new Tictactoe.game(),
+
+        'linha': function ( topic ) {
+            topic.setGrid();
+
+            topic.setCoupe( 1, 0, 'X' );
+            topic.setCoupe( 0, 2, 'O' );
+
+            topic.setCoupe( 1, 1, 'X' );
+            topic.setCoupe( 2, 2, 'O' );
+
+            topic.setCoupe( 1, 2, 'X' );
+
+            assert.equal( topic.getCoupe( 1, 0 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 1, 1 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 1, 2 ) === 'X', true, 'Não correspondente a X' );
+        }
+    },
+
+    'Vertical, terceira': {
+        topic: new Tictactoe.game(),
+
+        'linha': function ( topic ) {
+            topic.setGrid();
+
+            topic.setCoupe( 2, 0, 'X' );
+            topic.setCoupe( 1, 2, 'O' );
+
+            topic.setCoupe( 2, 1, 'X' );
+            topic.setCoupe( 0, 2, 'O' );
+
+            topic.setCoupe( 2, 2, 'X' );
+
+            assert.equal( topic.getCoupe( 2, 0 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 2, 1 ) === 'X', true, 'Não correspondente a X' );
+            assert.equal( topic.getCoupe( 2, 2 ) === 'X', true, 'Não correspondente a X' );
         }
     },
 }).run();
